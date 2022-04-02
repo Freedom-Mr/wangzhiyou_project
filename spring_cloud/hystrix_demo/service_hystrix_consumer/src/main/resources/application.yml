@@ -1,0 +1,52 @@
+server:
+  port: 5010
+
+  tomcat:
+    max-threas: 10 #降低最大线程数方便模拟高并发
+
+  #gzip 压缩 全局方式
+  compression:
+    enabled: true #是否开启压缩
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+
+spring:
+  application:
+    name: casia.isiteam.service-consumer
+# 配置 eureka server 注册中心
+eureka:
+  client:
+    register-with-eureka: false #是否将自己注册到注册中心，默认为true
+    registry-fetch-interval-seconds: 10 # 表示Eureka Client 间隔多久去服务器拉取注册信息，默认为30秒
+    serviceUrl: #注册中心对外暴露的注册地址
+      defaultZone: http://root:123456@localhost:8671/eureka/,http://root:123456@localhost:8672/eureka/
+
+# 负载均衡策略 - 局部方式
+# serviceHystrixProvider 为调用的服务的名称
+serviceHystrixProvider:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #随机策略
+
+    #超时配置 - 局部
+    OkToRetryOnAllOperations: true #对所有请求都进行重试
+    MaxAutoRetries: 1 #对当前实例重试次数
+    MaxAutoRetriesNextServer: 0 #切换实例的重试次数
+    ConnectTimeout: 5000 #请求连接的超时时间
+    ReadTimeout: 5000 #请求处理的超时时间
+
+#超时配置 - 全局
+#ribbon:
+#  ConnectTimeout: 5000 # 请求连接的超时时间，默认的时间为1秒
+#  ReadTimeout: 5000 #请求处理的超时时间
+
+
+#feign:
+# feign gzip 压缩 局部方式
+#  compression:
+#    request:
+#      mime-types: text/xml,application/xml,application/json #配置压缩支持的 MIME TYPE
+#      min-request-size: 512 #配置压缩数据大小的最小阈值，默认2048
+#      enabled: true #请求是否开启 gzip 压缩
+#    response:
+#      enabled: true #响应是否开启 gzip 压缩
+

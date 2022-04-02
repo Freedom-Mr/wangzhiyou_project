@@ -1,0 +1,25 @@
+server:
+  port: 7071
+
+spring:
+  application:
+    name: serviceProvider
+
+# 配置 eureka server 注册中心
+eureka:
+  instance:
+    prefer-ip-address: true #是否使用 ip 地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}  #ip:port
+  client:
+    serviceUrl: #注册中心对外暴露的注册地址
+      defaultZone: http://root:123456@localhost:8671/eureka/,http://root:123456@localhost:8672/eureka/
+
+#度量指标监控与健康监测
+management:
+  endpoints:
+    web:
+      exposure:
+        include: shutdown # 开启 shutdown 端点访问
+  endpoint:
+    shutdown:
+      enabled: true # 开启 shutdown 实现优雅停服 , http post请求 http://localhost:7070/actuator/shutdown 即可停服

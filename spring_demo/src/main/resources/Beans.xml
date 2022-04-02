@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="helloWorld" class="casia.isiteam.springTest.casia.isiteam.pojo.HelloWorld" >
+        <property name="message" value="Hello World!"/>
+        <property name="message2" value="Hello World2!"/>
+    </bean>
+
+    <bean id="singleton_helloWorld" class="casia.isiteam.springTest.casia.isiteam.pojo.HelloWorld" scope="singleton">
+        <property name="message" value="Hello World!"/>
+    </bean>
+
+    <bean id="prototype_helloWorld" class="casia.isiteam.springTest.casia.isiteam.pojo.HelloWorld" scope="prototype">
+        <property name="message" value="Hello World!"/>
+    </bean>
+
+    <bean id="postProcess_helloWorld" class="casia.isiteam.springTest.casia.isiteam.pojo.HelloWorld"
+          init-method="init" destroy-method="destroy">
+        <property name="message" value="Hello World!"/>
+    </bean>
+    <bean class="casia.isiteam.springTest.init.InitHelloWorld" />
+
+    <bean id="helloIndia" class="casia.isiteam.springTest.casia.isiteam.pojo.HelloIndia" parent="helloWorld">
+        <property name="message" value="Hello India!"/>
+        <property name="message3" value="Namaste India!"/>
+    </bean>
+
+
+
+    <!-- Definition for textEditor bean 依赖构造函数测试 -->
+    <bean id="textEditor" class="casia.isiteam.springTest.casia.isiteam.pojo.TextEditor">
+        <constructor-arg ref="spellChecker"/>
+    </bean>
+    <!-- Definition for spellChecker bean -->
+    <bean id="spellChecker" class="casia.isiteam.springTest.casia.isiteam.pojo.SpellChecker">
+    </bean>
+
+    <!-- Definition for textEditor bean 依赖设值函数测试
+    你应该注意定义在基于构造函数注入和基于设值函数注入中的 Beans.xml 文件的区别。唯一的区别就是在基于构造函数注入中，我们使用的是〈bean〉标签中的〈constructor-arg〉元素，
+    而在基于设值函数的注入中，我们使用的是〈bean〉标签中的〈property〉元素。
+    第二个你需要注意的点是，如果你要把一个引用传递给一个对象，那么你需要使用 标签的 ref 属性，而如果你要直接传递一个值，那么你应该使用 value 属性。-->
+    <bean id="textEditor2" class="casia.isiteam.springTest.casia.isiteam.pojo.TextEditor2">
+        <property name="spellChecker" ref="spellChecker2"/>
+    </bean>
+    <!-- Definition for spellChecker bean -->
+    <bean id="spellChecker2" class="casia.isiteam.springTest.casia.isiteam.pojo.SpellChecker2">
+    </bean>
+</beans>

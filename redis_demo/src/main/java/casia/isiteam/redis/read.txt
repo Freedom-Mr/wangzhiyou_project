@@ -1,0 +1,4 @@
+1、初始化连接：RedisClinet
+2、key操作：KeyTest
+3、数据类型操作：HashType、ListType、SetType、StringType、SortedSetType
+4、事务操作：TransactionTest

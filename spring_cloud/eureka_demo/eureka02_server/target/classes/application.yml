@@ -1,0 +1,35 @@
+server:
+  port: 8672 #端口
+
+spring:
+  application:
+    name: eureka-server #应用名称
+  #安全认证 ，eureka 会自动化配置CSRF防御机制，所以使用忽略/eureka/**所有请求 或者 保持密码验证的同时禁用CSRF的防御机制
+  security:
+    user:
+      name: root
+      password: 123456
+
+# 配置 eureka server 注册中心
+eureka:
+  instance:
+#    hostname: localhost #使用 主机名注册。不配置的时候将根据操作系统的主机名来获取
+    prefer-ip-address: true # 是否使用 ip地址注册，默认false
+    instance-id: http://${spring.cloud.client.ip-address}:${server.port} #ip:port
+
+  server:
+    enable-self-preservation: false # true 开启自我保护模式，false关闭自我保护模式
+    eviction-interval-timer-in-ms: 30000 #清理间隔（单位:毫秒，默认是60*1000）
+
+  client:
+     # 单节点配置
+#    register-with-eureka: false #是否将自己注册到注册中心，默认为true。 单节点为true会出差
+#    fetch-registry: false #是否从注册中心获取服务器注册信息，默认为true
+#    serviceUrl: #注册中心对外暴露的注册地址
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+     # 集群配置
+#    register-with-eureka: false #是否将自己注册到注册中心，默认为true。 单节点为true会出差
+#    fetch-registry: false #是否从注册中心获取服务器注册信息，默认为true
+    serviceUrl: #注册中心对外暴露的注册地址
+      defaultZone: http://root:123456@localhost:8671/eureka/

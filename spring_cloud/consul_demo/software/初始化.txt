@@ -1,0 +1,2 @@
+当前路径下执行下面命令运行
+ .\consul agent -dev

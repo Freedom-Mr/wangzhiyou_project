@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/java_test/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/redis_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitMQ_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/design_pattern/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_cloud/eureka_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_cloud/eureka_demo/service_consumer1/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_cloud/consul_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_cloud/feign_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_cloud/hystrix_demo/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/spring_cloud/consul_demo/service-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_cloud/eureka_demo/a/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_cloud/eureka_demo/service_consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_cloud/eureka_server/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

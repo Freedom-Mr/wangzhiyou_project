@@ -1,0 +1,6 @@
+1、简单模式 ： WorkQueue
+2、工作队列模式 ： WorkQueues
+3、发布/订阅者模式 ： publishQueue
+4、路由模式 ：routingQueue
+5、Topic模式 ：topicQueue
+6、RPC模式 ：rpcQueue
