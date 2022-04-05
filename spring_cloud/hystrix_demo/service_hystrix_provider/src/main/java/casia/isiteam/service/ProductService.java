@@ -15,11 +15,9 @@ import java.util.Map;
  */
 public interface ProductService {
     List<Product> selectProductList();
-    List<Product> selectProductList(Integer id);
+    List<Product> selectProductListByIds(List<Integer> ids);
+    Product selectProductById(Integer id);
 
-    Map<Object,Object> createProduct(Product product);
-
-    Product selectProductByPojo(Product product);
 
 
 }

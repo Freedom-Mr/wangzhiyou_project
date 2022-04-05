@@ -7,6 +7,7 @@ import casia.isiteam.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -29,18 +30,18 @@ public class ConsumerServiceImpl implements ConsumerService {
 
     @Override
     public Order selectOrderById(Integer id) {
-
-//        return new Order(id,"order-001","中国",32212D,productService.selectProductList());
-        return new Order(id,"order-001","中国",32212D,productService.selectProductListById(id));
+        return new Order(id,"order-001","中国",12212D,productService.selectProductList());
     }
 
     @Override
-    public Map<Object, Object> createProduct(Product product) {
-        return productService.createProduct(product);
+    public Order queryOrderById(Integer id) {
+        return new Order(id,"order-002","中国",22212D,productService.selectProductListByIds(Arrays.asList(1,2)));
     }
 
     @Override
-    public Product selectProductByPojo(Product product) {
-        return productService.selectProductByPojo(product);
+    public Order searchOrderById(Integer id) {
+        return new Order(id,"order-003","中国",32212D,
+                Arrays.asList(productService.selectProductById(5)));
     }
+
 }

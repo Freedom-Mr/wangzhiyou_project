@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>service_hystrix_provider</module>
-        <module>service_hystrix_provider2</module>
         <module>service_hystrix_consumer</module>
     </modules>
 

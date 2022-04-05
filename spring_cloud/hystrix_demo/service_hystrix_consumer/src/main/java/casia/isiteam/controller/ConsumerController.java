@@ -28,18 +28,18 @@ public class ConsumerController {
         return consumerService.selectOrderList();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/product/list")
     public Order selectOrderById(@PathVariable("id") Integer id){
         return consumerService.selectOrderById(id);
     }
 
-    @PostMapping("/save")
-    public Map<Object,Object> createProduct(@RequestBody Product product){
-        return consumerService.createProduct(product);
+    @PostMapping("/{id}/product/listByIds")
+    public Order queryOrderById(@PathVariable ("id") Integer id){
+        return consumerService.queryOrderById(id);
     }
 
-    @GetMapping("/pojo")
-    public Product selectProductByPojo(Product product){
-        return consumerService.selectProductByPojo(product);
+    @GetMapping("/{id}/product")
+    public Order searchOrderById(@PathVariable ("id") Integer id){
+        return consumerService.searchOrderById(id);
     }
 }

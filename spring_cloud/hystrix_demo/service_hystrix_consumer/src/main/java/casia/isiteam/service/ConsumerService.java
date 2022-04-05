@@ -17,6 +17,7 @@ import java.util.Map;
 public interface ConsumerService {
     Order selectOrderList();
     Order selectOrderById(Integer id);
-    Map<Object, Object> createProduct(Product product);
-    Product selectProductByPojo(Product product);
+    Order queryOrderById(Integer id);
+    Order searchOrderById(Integer id);
+
 }

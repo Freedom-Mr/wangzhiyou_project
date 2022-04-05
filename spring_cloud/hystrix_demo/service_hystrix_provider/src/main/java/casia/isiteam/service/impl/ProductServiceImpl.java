@@ -5,10 +5,7 @@ import org.springframework.stereotype.Service;
 import casia.isiteam.pojo.Product;
 import casia.isiteam.service.ProductService;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName: ProductServiceImpl
@@ -23,39 +20,23 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> selectProductList(){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return Arrays.asList(
-            new Product(1,"华为手机-7080",2,5888D),
+            new Product(1,"华为手机-7070",2,5888D),
             new Product(2,"小米手机",1,4888D),
             new Product(3,"苹果手机",4,6888D)
         );
     }
 
     @Override
-    public List<Product> selectProductList(Integer id){
-        return Arrays.asList(
-                new Product(1,"冰箱-7080",2,5888D)
-        );
+    public List<Product> selectProductListByIds(List<Integer> ids) {
+        List<Product> products = new ArrayList<>();
+        ids.forEach(id-> products.add(new Product(id,"电视剧"+id,1,2002D)));
+        return products;
     }
 
     @Override
-    public Map<Object, Object> createProduct(Product product) {
-        System.out.println(product);
-        return new HashMap<Object, Object>(){
-            {
-                put("code",200);
-                put("message","新增成功！");
-            }
-        };
+    public Product selectProductById(Integer id){
+        return new Product(1,"冰箱",2,5888D);
     }
 
-    @Override
-    public Product selectProductByPojo(Product product){
-        System.out.println(product);
-        return product;
-    }
 }

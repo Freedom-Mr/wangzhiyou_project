@@ -17,35 +17,20 @@ import java.util.Map;
  * Created by casia.wangzhiyou on 2022/4/1
  * Email: zhiyou_wang@foxmail.com
  */
-//声明需要调用的函数
-@FeignClient("serviceHystrixProvider")
+
 public interface ProductService {
     /**
      * 查询商品列表
      * @return
      */
-    @GetMapping("/product/list")
     List<Product> selectProductList();
-
     /**
      * 查询商品列表
      * @return
      */
-    @GetMapping("/product/{id}")
-    List<Product> selectProductListById(@PathVariable("id") Integer id);
+    List<Product> selectProductListByIds (List<Integer> ids);
 
-    /**
-     * 新增商品
-     * @return
-     */
-    @PostMapping("/product/save")
-    Map<Object,Object> createProduct (Product product);
+    Product selectProductById(Integer id);
 
 
-    /**
-     * 接收商品对象参数
-     * @return
-     */
-    @GetMapping("/product/pojo")
-    Product selectProductByPojo (Product product);
 }

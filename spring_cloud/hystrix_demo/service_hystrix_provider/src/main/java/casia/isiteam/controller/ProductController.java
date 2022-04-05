@@ -27,18 +27,13 @@ public class ProductController {
         return productService.selectProductList();
     }
 
+    @GetMapping("/listByIds")
+    public List<Product> selectProductListByIds(@RequestParam("id") List<Integer> ids){
+        return productService.selectProductListByIds(ids);
+    }
+
     @GetMapping("/{id}")
-    public List<Product> selectProductList(@PathVariable("id") Integer id){
-        return productService.selectProductList(id);
-    }
-
-    @PostMapping("/save")
-    public Map<Object,Object> createProduct(@RequestBody Product product){
-        return productService.createProduct(product);
-    }
-
-    @GetMapping("/pojo")
-    public Product selectProductByPojo(@RequestBody Product product){
-        return productService.selectProductByPojo(product);
+    public Product selectProductById(@PathVariable("id") Integer id){
+        return productService.selectProductById(id);
     }
 }
