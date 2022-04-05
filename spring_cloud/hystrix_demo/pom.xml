@@ -11,6 +11,9 @@
     <modules>
         <module>service_hystrix_provider</module>
         <module>service_hystrix_consumer</module>
+        <module>service_hystrix_consumer_merge</module>
+        <module>service_hystrix_consumer_isolation</module>
+        <module>service_hystrix_consumer_circuit_breaker</module>
     </modules>
 
     <properties>

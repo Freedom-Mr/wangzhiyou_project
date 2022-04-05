@@ -24,6 +24,11 @@ public class ProductController {
 
     @GetMapping("/list")
     public List<Product> selectProductList(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return productService.selectProductList();
     }
 

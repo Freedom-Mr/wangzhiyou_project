@@ -46,7 +46,7 @@ public class RedisConfig {
                 redisTemplate.getConnectionFactory());
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig().
                 //设置默认过期时间 30 min
-                entryTtl(Duration.ofMillis(30))
+                entryTtl(Duration.ofMinutes(30))
                 //设置 key 和 value 的序列化
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisTemplate.getStringSerializer()))
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(redisTemplate.getValueSerializer()));
