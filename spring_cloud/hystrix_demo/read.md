@@ -1,11 +1,16 @@
 # netflix hystrix 服务管理
 ==================================
+hystrix已停止维护，可选择阿里的sentinel
+
+## 请先启动 eureka_demo 项目中的服务注册中心
+1. eureka_demo -> eureka_server
+2. eureka_demo -> eureka02_server
 
 ## 雪崩效应
 并发导致雪崩效应
 - service_hystrix_consumer 启动后用jMeter测试
 
-#解决方案
+## 解决方案
 1. 请求缓存
 - service_hystrix_consumer
 - 这里使用redis作为缓存载体
@@ -34,10 +39,30 @@
 4. 服务熔断
 - service_hystrix_consumer_circuit_breaker
 
-
 5. 服务降级
+- service_hystrix_consumer_circuit_breaker
+- 触发条件
+  1. 方法抛出非 HystrixBadRequestException 异常;
+  2. 方法调用超时
+  3. 熔断器开启拦截
+  4. 线程池/队列/信号量跑满
 
+6. Feign 雪崩处理
+- service_hystrix_consumer_merge
+  1. ProductServiceFallbackFactory 日志捕获类
 
-## 请先启动 eureka_demo 项目中的服务注册中心
-1. eureka_demo -> eureka_server
-2. eureka_demo -> eureka02_server
+## Hystrix 服务监控
+1. actuator 组件(单服务监控)
+- service_hystrix_consumer_actuator
+- 请求连接
+  > http://localhost:5011/actuator
+  > http://localhost:5011/actuator/hystrix.stream
+  > http://localhost:5011/hystrix
+  > http://localhost:5011/order/1/product
+
+2. turbine 组件（多服务聚合监控）
+- service_hystrix_consumer_turbine
+- 请求连接
+  > http://localhost:5012/turbine.stream
+  > http://localhost:5012/hystrix
+  > 填入 http://localhost:5012/turbine.stream

@@ -54,3 +54,9 @@ serviceHystrixProvider:
 #    response:
 #      enabled: true #响应是否开启 gzip 压缩
 
+# 度量指标监控与健康监测
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream

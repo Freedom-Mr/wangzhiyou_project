@@ -42,6 +42,8 @@ public class ProductServiceImpl implements ProductService {
         return response.getBody();
     }
 
+    //服务降级
+    @HystrixCommand(fallbackMethod = "selectProductByIdFallback")
     @Override
     public List<Product> selectProductListByIds(List<Integer> ids) {
         System.out.println(Thread.currentThread().getName()+"---serviceHystrixProvider------selectProductListByIds----");
@@ -70,6 +72,10 @@ public class ProductServiceImpl implements ProductService {
     public Product selectProductById(Integer id) {
         System.out.println(Thread.currentThread().getName()+"---serviceHystrixProvider------selectProductById----"+
                 LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
+        //人为异常
+        if( 1 == id ){
+            throw  new RuntimeException("查询主键为1 的商品信息导致异常");
+        }
         return restTemplate.getForObject("http://serviceHystrixProvider/product/"+id,Product.class);
     }
 
@@ -77,8 +83,8 @@ public class ProductServiceImpl implements ProductService {
      * 托底数据方法
      * @return
      */
-    public Product selectProductByIdFallback(){
+    public Product selectProductByIdFallback(Integer id){
         System.out.println("托底开始");
-        return new Product(1,"托底数据-华为手机",3,5999D);
+        return new Product(id,"托底数据-华为手机",3,5999D);
     }
 }

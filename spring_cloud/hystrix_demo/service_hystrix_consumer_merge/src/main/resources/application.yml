@@ -53,4 +53,3 @@ serviceHystrixProvider:
 #      enabled: true #请求是否开启 gzip 压缩
 #    response:
 #      enabled: true #响应是否开启 gzip 压缩
-
