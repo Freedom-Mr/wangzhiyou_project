@@ -1,0 +1,29 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: zuul-server
+
+# 路由规则 ,简化路由注释 zuul 下面所有
+zuul:
+  routes:
+    serviceSentinelProvider:  #路由 id ，自定义
+      path: /serviceSentinelProvider/** # 配置请求 url 的映射路径
+      # 1、url 路由模式
+      #url: http://localhost:7070/ #映射路径对应的微服务地址
+      # 2、服务名称路由
+      serviceId: serviceSentinelProvider #根据 serviceId 自动从注册中心获取
+  # URL 地址排除，排除所有包含 /order/ 的路径
+#  ignored-patterns: /**/list/**
+  # 服务名称排除，多个用逗号分隔
+  ignored-services: order-service
+
+# 配置 eureka server 注册中心
+eureka:
+  instance:
+    prefer-ip-address: true #是否使用 ip 地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}  #ip:port
+  client:
+    serviceUrl: #注册中心对外暴露的注册地址
+      defaultZone: http://root:123456@localhost:8671/eureka/,http://root:123456@localhost:8672/eureka/

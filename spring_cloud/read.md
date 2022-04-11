@@ -11,3 +11,6 @@
 ## 服务管理，熔断、降级
 1. hystrix_demo： netflix hystrix 已停止维护
 2. sentinel_demo： 阿里巴巴研发，是一款高性能且轻量级的流量控制、熔断降级的可替代方案。
+
+## 网关
+1. zuul_demo: netflix zuul 网关
