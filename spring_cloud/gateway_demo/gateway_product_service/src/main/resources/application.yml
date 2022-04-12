@@ -1,0 +1,15 @@
+server:
+  port: 7070
+
+spring:
+  application:
+    name: serviceGatewayProvider
+
+# 配置 eureka server 注册中心
+eureka:
+  instance:
+    prefer-ip-address: true #是否使用 ip 地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}  #ip:port
+  client:
+    serviceUrl: #注册中心对外暴露的注册地址
+      defaultZone: http://root:123456@localhost:8671/eureka/,http://root:123456@localhost:8672/eureka/

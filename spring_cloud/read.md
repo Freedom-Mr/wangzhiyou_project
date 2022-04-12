@@ -14,3 +14,14 @@
 
 ## 网关
 1. zuul_demo: netflix zuul 网关
+2. gateway_demo: springCloud gateway 网关
+
+
+## 高可用集群
+- 集群部署
+- 负载均衡  nginx
+- 健康检查
+- 节点自动重启
+- 熔断
+- 服务降级
+- 接口重试
