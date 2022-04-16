@@ -2,7 +2,7 @@
 1. eureka_demo：netflix eureka 服务注册
 2. consul_demo：consul 服务注册
 3. zookeeper_demo：apache zookeeper 服务注册
-4. Nacos_demo：阿里 nacos 服务注册
+4. nacos_demo：阿里 nacos 服务注册
 
 ## 负载均衡demo
 1. eureka_demo -> service_consumer： netflix ribbon 负载均衡

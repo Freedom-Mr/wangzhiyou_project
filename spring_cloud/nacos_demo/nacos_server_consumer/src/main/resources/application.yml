@@ -1,0 +1,24 @@
+server:
+  port: 5011
+
+spring:
+  application:
+    name: service-consumer
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: public
+
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: public
+
+# Endpoint 本身对外界隐藏显示，我们需要在配置里面开启对 Endponit 的显示支持。
+# exposure.include：对外界保留哪些 Endpoint，若是所有则使用* ；
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
