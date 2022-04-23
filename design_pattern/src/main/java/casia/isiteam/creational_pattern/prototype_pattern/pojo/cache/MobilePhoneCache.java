@@ -25,7 +25,7 @@ public class MobilePhoneCache {
 
     // 对每种手机都运行数据库查询，并创建该手机
     // mobilePhoneMap.put(mobilePhoneKey, mobilePhone);
-    // 例如，我们要添加三种形状
+    // 例如，我们要添加三种手机
     public static void loadCache() {
         Apple apple = new Apple();
         apple.setId("1");
