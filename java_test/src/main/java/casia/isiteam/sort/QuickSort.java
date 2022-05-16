@@ -1,5 +1,7 @@
 package casia.isiteam.sort;
 
+import java.util.Arrays;
+
 /**
  * @ClassName: QuickSort
  * @Description: 快速排序 不稳定
@@ -33,7 +35,7 @@ public class QuickSort {
         if(array == null || (len = array.length) == 0 || len == 1) {
             return ;
         }
-        sort(array, 0, len - 1);
+        sort1(array, 0, len - 1);
     }
     /**
      * 快排核心算法，递归实现
@@ -67,9 +69,19 @@ public class QuickSort {
             }
         }
 
+        for (int c : array) {
+            System.out.print(c+"，");
+        }
+        System.out.print("->");
+
         // 将基准数放到中间的位置（基准数归位）
         array[left] = array[i];
         array[i] = base;
+
+        for (int c : array) {
+            System.out.print(c+"，");
+        }
+        System.out.println("");
 
         // 递归，继续向基准的左右两边执行和上面同样的操作
         // i的索引处为上面已确定好的基准值的位置，无需再处理
@@ -80,4 +92,33 @@ public class QuickSort {
 
     //算法分析
     //最佳情况：T(n) = O(n log n)   最差情况：T(n) = O(n2)   平均情况：T(n) = O(n log n)　
+
+    public static void sort1(int[] arry,int left,int right){
+        if(left>right){
+            return;
+        }
+        int i = left;
+        int j = right;
+        while (i!=j){
+            while ( arry[j] >= arry[left] && i<j ){
+                j--;
+            }
+
+            while ( arry[i] <= arry[left] && i<j ){
+                i++;
+            }
+            if(i<j){
+                int tmp = arry[i];
+                arry[i] = arry[j];
+                arry[j] = tmp;
+            }
+        }
+        if( i>left ){
+            int tmp = arry[i];
+            arry[i] = arry[left];
+            arry[left] = tmp;
+        }
+        sort(arry,left,i-1);
+        sort(arry,i+1,right);
+    }
 }
